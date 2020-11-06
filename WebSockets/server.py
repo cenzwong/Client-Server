@@ -14,7 +14,7 @@ async def hello(websocket, path):
     greeting = f"{label}"
 
     await websocket.send(greeting)
-    print(f"> {label}")
+    print(f"> {greeting}")
 
 start_server = websockets.serve(hello, "localhost", 8765)
 
