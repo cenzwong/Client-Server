@@ -1,15 +1,17 @@
-#!/usr/bin/env python3
+# WS client example
 
-import sys
-from socket import socket, AF_INET, SOCK_DGRAM
+import asyncio
+import websockets
 
-SERVER_IP   = '127.0.0.1'
-PORT_NUMBER = 5000
-SIZE = 1024
-print ("Test client sending packets to IP {0}, via port {1}\n".format(SERVER_IP, PORT_NUMBER))
+async def hello():
+    uri = "ws://localhost:8765"
+    async with websockets.connect(uri) as websocket:
+        name = input("What's your name? ")
 
-mySocket = socket( AF_INET, SOCK_DGRAM )
-myMessage = "Testing12345"
-mySocket.sendto(myMessage.encode('utf-8'),(SERVER_IP,PORT_NUMBER))
+        await websocket.send(name)
+        print(f"> {name}")
 
-sys.exit()
+        greeting = await websocket.recv()
+        print(f"< {greeting}")
+
+asyncio.get_event_loop().run_until_complete(hello())
