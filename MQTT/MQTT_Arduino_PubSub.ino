@@ -9,8 +9,8 @@
 #include <PubSubClient.h>
 
 // Replace the next variables with your SSID/Password combination
-const char* ssid = "RmCz";
-const char* password = "24473866";
+const char* ssid = "wifissid";
+const char* password = "12345678";
 
 // Add your MQTT Broker IP address, example:
 //const char* mqtt_server = "192.168.1.144";
